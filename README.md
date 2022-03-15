@@ -48,6 +48,7 @@ characteristics (or subspaces) where a given object is different from the rest o
 Something in the lines of:
 
 > "OK, I know that this object is an outlier, but why exactly?"
+
 **OAM helps you to figure it out!**
 
 Defining the problem in a generic way, we consider a set of data
@@ -191,5 +192,4 @@ We recognize our testing strategy is quite simple, many times we just look for
 exceptions in the happy path - we'll be glad to accept some help improving this area.
 
 You can run them in your own through
-```make test```
-in the root folder.
+```make test```.
