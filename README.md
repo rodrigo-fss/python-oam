@@ -31,7 +31,7 @@ You can install it using pip
 pip install python-oam
 ```
 
-python-oam is testes with:
+python-oam is tested with:
 
 |                     | Version (dev)  |
 |---------------------|----------------|
@@ -42,21 +42,23 @@ python-oam is testes with:
 
 What 's OAM?
 ---
-Outlying Aspect Mining (OAM), can be interpreted as The task of looking for a set of
-characteristics (or subspaces) where a given object is different from the rest of the other objects.
-Something in the lines of
+Outlying Aspect Mining (OAM), can be interpreted as "The task of looking for a set of
+characteristics (or subspaces) where a given object is different from the rest of the other objects."
+
+Something in the lines of:
+
 > "OK, I know that this object is an outlier, but why exactly?"
 **OAM helps you to figure it out!**
 
 Defining the problem in a generic way, we consider a set of data
-X = {x1, x2, ..., xn} with n observations in a D-dimensional space. The application of
-OAM seeks to understand which dimensions of D make a sample of X to be considered
+*X = {x1, x2, ..., xn}* with n observations in a D-dimensional space. The application of
+OAM seeks to understand which dimensions of *D* make a sample of *X* to be considered
 an outlier.
 
 The existing OAM techniques are classified into three major groups,
-*Score and Search* , *Feature Selection* and *Hybrid Approach* .
+*Score and Search* , *Feature Selection* and *Hybrid Approach*.
 
-We mainly focused on the development of a **Score and Search** based toolbox
+We mainly focused on the development of a **Score and Search** based toolbox,
 so let's talk a little bit more about it
 
 Score and Search
@@ -85,8 +87,8 @@ given his "Number of Jumps" and "Three Points Made". How about "Average Running 
 "Offensive rebound"?
 
 After scoring all the dimensions the search function returned, we compare them all
-to get to the most outlier set of dimensions - and that's a way to explain
-why Stephen Curry was recognized as an outlier basketball player in 2015 season.
+to get to the most outlier set of dimensions
+> and that's a way to explain why Stephen Curry was recognized as an outlier basketball player in 2015 season.
 
 Scoring Functions
 ---
@@ -105,7 +107,7 @@ less cuts. This behavior can be observed in Figure 1, where (a) represents the
 procedure of an outlier that was isolated with only three cuts, while (b), a value
 not considered an outlier, it needed 7 cuts to be isolated from the rest of the data.
 
-[Image 1](https://i.postimg.cc/3w3Kwd5Q/ipath.png)
+![Image 1](https://i.postimg.cc/3w3Kwd5Q/ipath.png)
 
 
 Search Functions
@@ -118,22 +120,22 @@ a minimum and maximum size. This means that, for example, for a dataset of
 Combination will create all possible combinations without repetition.
 
 Let's say you have a dataset with the followin dimensions
-```
-[datetime,ticker,open,close,high,low,volume]
+```python
+['datetime','ticker','open','close','high','low','volume']
 ```
 
 if your maximum value is one the Simple Combination algorithm will return:
-```
-[[datetime],[ticker],[open],[close],[high],[low],[volume]]
+```python
+[['datetime'],['ticker'],['open'],['close'],['high'],['low'],['volume']]
 ```
 if your maximum value is two the Simple Combination algorithm will return:
-
+```python
 [['datetime', 'ticker'], ['datetime', 'open'], ['datetime', 'close'], ['datetime', 'high'], ...]
-
+```
 This technique allows the user to analyze a large number of dimensions
 controlling the combinatorial explosion caused by an all-to-all combination with no size limit.
 
-Lib Architecture
+Architecture
 ---
 
 - Preprocess: contains a normalization function that allows the user to assign
@@ -149,7 +151,7 @@ function as a set. As the scoring algorithm chosen, for the creation of
 an instance of iPath requires only two parameters, the size of the generated subsamples
 and the number of trees to be generated.
 
-```
+```python
 ipath = IsolationPath(
     subsample_size=256,
     number_of_paths=50
@@ -159,7 +161,7 @@ ipath = IsolationPath(
 Then SimpleCombination, implemented as a search method, receives the instance of the chosen scoring method,
 the parameters that define the size of the generated subspaces and which dimensions will be used.
 
-```
+```python
 search = SimpleCombination(
     ipath,
     min_items_per_subspace=2,
