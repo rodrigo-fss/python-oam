@@ -7,11 +7,7 @@ on:
 
 jobs:
   run:
-    name: Run
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: [ubuntu-latest, self-hosted, macOS]
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
@@ -19,7 +15,7 @@ jobs:
         python-version: '3.9'
 
     - name: Lint
-      run: Make lint
+      run: make lint
 
     - name: Test
-      run: Make test
+      run: make test
