@@ -14,8 +14,7 @@ test: clean
 isort:
 	isort oam
 
-lint:
-	clean
+lint: clean
 	flake8 --max-line-length=120 --ignore=E402 oam
 
 clean-test:
