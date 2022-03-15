@@ -7,9 +7,13 @@ setup:
 	pip install --upgrade pip
 	pip install -r requirements.txt
 
+badge:
+	coverage-badge > .github/badges/coverage_badge.svg
+
 test:
 	clean
 	python -m pytest -v -s --cov=. --cov-fail-under=90
+	badge
 
 isort:
 	isort oam
@@ -31,6 +35,3 @@ clean-pyc:
 	rm -rf *.pyo
 	rm -rf *.~
 	rm -rf oam/*__pycache__*
-
-badge:
-	coverage-badge > .github/badges/coverage_badge.svg
