@@ -1,16 +1,12 @@
 import pandas as pd
-
 import seaborn as sns
 from scipy.stats import zscore
 
 
 def zscore_heatmap(
-        dataframe: pd.DataFrame,
-        index: str = None,
-        head: int = None,
-        abs: bool = None,
-        return_dataframe: bool = False):
-    ''' The z-score also know as standard score is the number of standard
+    dataframe: pd.DataFrame, index: str = None, head: int = None, abs: bool = None, return_dataframe: bool = False
+):
+    """The z-score also know as standard score is the number of standard
     deviations by which the value of a raw score is above or below the mean and
     can be used to analyse how deviant an observation is from the rest of the
     distribution.
@@ -32,7 +28,7 @@ def zscore_heatmap(
             zscore dataframe or only presenting the heatmap.
 
         Returns:
-            (pd.Dataframe): Transformed dataframe'''
+            (pd.Dataframe): Transformed dataframe"""
 
     heatmap_df = dataframe.copy(deep=True)
     if index:
@@ -71,7 +67,7 @@ def visualize_oam_results(result_df, head):
 
     # add the score correspondent to that subspace
     for idx, score in enumerate(result_df.score):
-        viz_df.loc[idx, 'score'] = score
+        viz_df.loc[idx, "score"] = score
 
     viz_df = viz_df.head(head)
     sns.heatmap(viz_df, annot=True)

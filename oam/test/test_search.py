@@ -1,6 +1,5 @@
-import pytest
-
 import pandas as pd
+import pytest
 
 from oam.score.isolation_path import IsolationPath
 from oam.search.simple_combination import SimpleCombination
@@ -8,15 +7,12 @@ from oam.search.simple_combination import SimpleCombination
 
 @pytest.fixture
 def dataframe():
-    return pd.read_csv('../../datasets/df_outliers.csv')
+    return pd.read_csv("datasets/df_outliers.csv")
 
 
 @pytest.fixture
 def ipath():
-    return IsolationPath(
-        subsample_size=50,
-        number_of_paths=5
-    )
+    return IsolationPath(subsample_size=50, number_of_paths=5)
 
 
 @pytest.fixture
@@ -25,9 +21,14 @@ def ipath_sc(ipath):
         ipath,
         min_items_per_subspace=2,
         max_items_per_subspace=3,
-        dimensions=['variation_mean', 'variation_std', 'up_count',
-                    'down_count', 'top_15_variation_mean',
-                    'top_15_variation_std'],
+        dimensions=[
+            "variation_mean",
+            "variation_std",
+            "up_count",
+            "down_count",
+            "top_15_variation_mean",
+            "top_15_variation_std",
+        ],
     )
 
 
@@ -36,50 +37,50 @@ def sc_defined_subspaces(ipath):
     return SimpleCombination(
         ipath,
         subspaces=[
-            ['variation_std', 'down_count', 'top_15_variation_std'],
-            ['variation_mean', 'up_count', 'top_15_variation_mean']
-        ]
+            ["variation_std", "down_count", "top_15_variation_std"],
+            ["variation_mean", "up_count", "top_15_variation_mean"],
+        ],
     )
 
 
 def test_generate_subspaces(ipath_sc):
     subspaces = ipath_sc._generate_subspaces()
     expected_subspaces = [
-        ['variation_mean', 'variation_std'],
-        ['variation_mean', 'up_count'],
-        ['variation_mean', 'down_count'],
-        ['variation_mean', 'top_15_variation_mean'],
-        ['variation_mean', 'top_15_variation_std'],
-        ['variation_std', 'up_count'],
-        ['variation_std', 'down_count'],
-        ['variation_std', 'top_15_variation_mean'],
-        ['variation_std', 'top_15_variation_std'],
-        ['up_count', 'down_count'],
-        ['up_count', 'top_15_variation_mean'],
-        ['up_count', 'top_15_variation_std'],
-        ['down_count', 'top_15_variation_mean'],
-        ['down_count', 'top_15_variation_std'],
-        ['top_15_variation_mean', 'top_15_variation_std'],
-        ['variation_mean', 'variation_std', 'up_count'],
-        ['variation_mean', 'variation_std', 'down_count'],
-        ['variation_mean', 'variation_std', 'top_15_variation_mean'],
-        ['variation_mean', 'variation_std', 'top_15_variation_std'],
-        ['variation_mean', 'up_count', 'down_count'],
-        ['variation_mean', 'up_count', 'top_15_variation_mean'],
-        ['variation_mean', 'up_count', 'top_15_variation_std'],
-        ['variation_mean', 'down_count', 'top_15_variation_mean'],
-        ['variation_mean', 'down_count', 'top_15_variation_std'],
-        ['variation_mean', 'top_15_variation_mean', 'top_15_variation_std'],
-        ['variation_std', 'up_count', 'down_count'],
-        ['variation_std', 'up_count', 'top_15_variation_mean'],
-        ['variation_std', 'up_count', 'top_15_variation_std'],
-        ['variation_std', 'down_count', 'top_15_variation_mean'],
-        ['variation_std', 'down_count', 'top_15_variation_std'],
-        ['variation_std', 'top_15_variation_mean', 'top_15_variation_std'],
-        ['up_count', 'down_count', 'top_15_variation_mean'],
-        ['up_count', 'down_count', 'top_15_variation_std'],
-        ['up_count', 'top_15_variation_mean', 'top_15_variation_std'],
-        ['down_count', 'top_15_variation_mean', 'top_15_variation_std']
+        ["variation_mean", "variation_std"],
+        ["variation_mean", "up_count"],
+        ["variation_mean", "down_count"],
+        ["variation_mean", "top_15_variation_mean"],
+        ["variation_mean", "top_15_variation_std"],
+        ["variation_std", "up_count"],
+        ["variation_std", "down_count"],
+        ["variation_std", "top_15_variation_mean"],
+        ["variation_std", "top_15_variation_std"],
+        ["up_count", "down_count"],
+        ["up_count", "top_15_variation_mean"],
+        ["up_count", "top_15_variation_std"],
+        ["down_count", "top_15_variation_mean"],
+        ["down_count", "top_15_variation_std"],
+        ["top_15_variation_mean", "top_15_variation_std"],
+        ["variation_mean", "variation_std", "up_count"],
+        ["variation_mean", "variation_std", "down_count"],
+        ["variation_mean", "variation_std", "top_15_variation_mean"],
+        ["variation_mean", "variation_std", "top_15_variation_std"],
+        ["variation_mean", "up_count", "down_count"],
+        ["variation_mean", "up_count", "top_15_variation_mean"],
+        ["variation_mean", "up_count", "top_15_variation_std"],
+        ["variation_mean", "down_count", "top_15_variation_mean"],
+        ["variation_mean", "down_count", "top_15_variation_std"],
+        ["variation_mean", "top_15_variation_mean", "top_15_variation_std"],
+        ["variation_std", "up_count", "down_count"],
+        ["variation_std", "up_count", "top_15_variation_mean"],
+        ["variation_std", "up_count", "top_15_variation_std"],
+        ["variation_std", "down_count", "top_15_variation_mean"],
+        ["variation_std", "down_count", "top_15_variation_std"],
+        ["variation_std", "top_15_variation_mean", "top_15_variation_std"],
+        ["up_count", "down_count", "top_15_variation_mean"],
+        ["up_count", "down_count", "top_15_variation_std"],
+        ["up_count", "top_15_variation_mean", "top_15_variation_std"],
+        ["down_count", "top_15_variation_mean", "top_15_variation_std"],
     ]
     assert subspaces == expected_subspaces
 

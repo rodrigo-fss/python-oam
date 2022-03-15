@@ -1,16 +1,14 @@
-import pytest
-
 import pandas as pd
+import pytest
 
 from oam.preprocess import normalize
 
 
 @pytest.fixture
 def dataframe():
-    df = pd.read_csv('../../datasets/df_outliers.csv')
+    df = pd.read_csv("datasets/df_outliers.csv")
     df = df[
-        ['variation_mean', 'variation_std',	'up_count',
-         'down_count', 'top_15_variation_mean', 'top_15_variation_std']
+        ["variation_mean", "variation_std", "up_count", "down_count", "top_15_variation_mean", "top_15_variation_std"]
     ]
 
     return df
