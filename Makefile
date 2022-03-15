@@ -1,7 +1,4 @@
-clean:
-	clean-test
-	clean-envs
-	clean-pyc
+clean: clean-test clean-envs clean-pyc
 
 setup:
 	pip install --upgrade pip
@@ -10,10 +7,9 @@ setup:
 badge:
 	coverage-badge > .github/badges/coverage_badge.svg
 
-test:
-	clean
-	python -m pytest -v -s --cov=. --cov-fail-under=90
-	badge
+test: clean
+	python -m pytest -v -s --cov=. --cov-fail-under=85
+	make badge
 
 isort:
 	isort oam
