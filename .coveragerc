@@ -1,0 +1,7 @@
+[report]
+omit =
+    oam/score/__init__.py
+    oam/search/__init__.py
+    visualization/*
+    setup.py
+    oam/test/*

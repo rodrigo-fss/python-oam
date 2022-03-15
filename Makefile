@@ -1,16 +1,21 @@
-clean: clean-test clean-envs clean-pyc
+clean:
+	clean-test
+	clean-envs
+	clean-pyc
 
 setup:
 	pip install --upgrade pip
 	pip install -r requirements.txt
 
-test: clean
-	python -m pytest -v -s
+test:
+	clean
+	python -m pytest -v -s --cov=. --cov-fail-under=90
 
 isort:
 	isort oam
 
-lint: clean
+lint:
+	clean
 	flake8 --max-line-length=120 --ignore=E402 oam
 
 clean-test:
@@ -26,3 +31,6 @@ clean-pyc:
 	rm -rf *.pyo
 	rm -rf *.~
 	rm -rf oam/*__pycache__*
+
+badge:
+	coverage-badge > .github/badges/coverage_badge.svg
