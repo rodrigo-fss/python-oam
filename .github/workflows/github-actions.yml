@@ -6,13 +6,16 @@ on:
     branches: [ main ]
 
 jobs:
-  run:
+  CI:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
       with:
         python-version: '3.9'
+
+    - name: Install dependencies
+      run: make setup
 
     - name: Lint
       run: make lint
