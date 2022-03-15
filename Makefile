@@ -11,7 +11,7 @@ isort:
 	isort oam
 
 lint: clean
-	flake8 --max-line-length=120 oam
+	flake8 --max-line-length=120 --ignore=E402 oam
 
 clean-test:
 	rm -rf .tox .coverage htmlcov coverage-reports tests.xml tests.html
