@@ -190,6 +190,6 @@ Tests
 We recognize our testing strategy is quite simple, many times we just look for
 exceptions in the happy path - we'll be glad to accept some help improving this area.
 
-You can run them in your own trough
+You can run them in your own through
 ```make test```
 in the root folder.
