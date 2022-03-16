@@ -20,7 +20,7 @@ repos:
     rev: 4.0.1
     hooks:
     - id: flake8
-      args: [--max-line-length=120, --ignore=E402, oam]
+      args: [--max-line-length=120, --ignore=E402, --per-file-ignores=setup.py:E501, oam]
   # - repo: local
   #   hooks:
   #     - id: pytest

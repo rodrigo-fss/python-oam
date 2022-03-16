@@ -153,6 +153,8 @@ an instance of iPath requires only two parameters, the size of the generated sub
 and the number of trees to be generated.
 
 ```python
+from oam.score.isolation_path import IsolationPath
+
 ipath = IsolationPath(
     subsample_size=256,
     number_of_paths=50
@@ -163,6 +165,8 @@ Then SimpleCombination, implemented as a search method, receives the instance of
 the parameters that define the size of the generated subspaces and which dimensions will be used.
 
 ```python
+from oam.search.simple_combination import SimpleCombination
+
 search = SimpleCombination(
     ipath,
     min_items_per_subspace=2,
