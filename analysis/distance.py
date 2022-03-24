@@ -3,7 +3,7 @@ import sys
 import pandas as pd
 import seaborn as sns
 
-sys.path.insert(0, "../../")
+sys.path.insert(0, "../")
 from oam.score.isolation_path import IsolationPath
 from oam.search.simple_combination import SimpleCombination
 
@@ -11,7 +11,7 @@ pd.set_option("display.max_rows", 500)
 pd.set_option("display.max_columns", 500)
 pd.set_option("display.width", 1000)
 
-df = pd.read_csv("../../datasets/df_outliers.csv")
+df = pd.read_csv("../datasets/df_outliers.csv")
 distance = pd.DataFrame()
 correlation_list = []
 

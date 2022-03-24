@@ -2,12 +2,12 @@ import sys
 
 import pandas as pd
 
-sys.path.insert(0, "../../")
+sys.path.insert(0, "../")
 from oam.score.isolation_path import IsolationPath
 from oam.search.simple_combination import SimpleCombination
 from oam.visualization import visualize_oam_results
 
-df = pd.read_csv("../../datasets/df_outliers.csv")
+df = pd.read_csv("../datasets/df_outliers.csv")
 
 correlation_list = []
 
