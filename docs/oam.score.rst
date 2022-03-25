@@ -14,7 +14,7 @@ not considered an outlier, it needed 7 cuts to be isolated from the rest of the 
 
 .. image:: images/ipath.png
 
-To extend with different a algorithm just make sure it has an *score* method returning an *integer* as the
+To extend the lib with a different algorithm just make sure it has an *score* method returning an *integer* as the
 outling score.
 
 You can find more details about it in the `repo README <https://github.com/rodrigo-fss/python-oam//>`_!
