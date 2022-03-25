@@ -20,6 +20,8 @@ datasets in an extensible way.
 
 Feel free to not only use it but also extend it as wished.
 
+**The modules documentation, with example images and docstring of each class/method**
+**can be found [here](https://rodrigo-fss.github.io/python-oam/_build/html/index.html)**
 
 Installation
 ---
