@@ -1,0 +1,37 @@
+oam.test package
+================
+
+Submodules
+----------
+
+oam.test.sample\_search module
+------------------------------
+
+.. automodule:: oam.test.sample_search
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+oam.test.test\_score module
+---------------------------
+
+.. automodule:: oam.test.test_score
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+oam.test.test\_search module
+----------------------------
+
+.. automodule:: oam.test.test_search
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: oam.test
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -4,7 +4,7 @@
 
 ### OAM toolbox made by the community to the community
 
-Outlier detection has been used to detect and, if appropriate, remove anomalous observati-
+Outlier detection has been used to detect and, if appropriate, remove anomalous observati
 ons from the data. It’s usability can identify system failures and frauds before they escalate
 with potentially huge consequences.
 
@@ -15,8 +15,8 @@ called Outlier Aspect Mining (OAM). Promising results and applications and cases
 been presented by the community.
 
 The objective of this lib is to contribute to OAM research in a practical way. **Python-OAM** allow
-you to apply Outlier Aspect Mining algorithms and analyze the results in your own
-datasets.
+you to easily apply Outlier Aspect Mining algorithms and analyze the results in your own
+datasets in an extensible way.
 
 Feel free to not only use it but also extend it as wished.
 
@@ -108,7 +108,7 @@ less cuts. This behavior can be observed in Figure 1, where (a) represents the
 procedure of an outlier that was isolated with only three cuts, while (b), a value
 not considered an outlier, it needed 7 cuts to be isolated from the rest of the data.
 
-![Image 1](https://i.postimg.cc/3w3Kwd5Q/ipath.png)
+![Image 1](https://github.com/rodrigo-fss/python-oam/blob/main/docs/images/ipath.png)
 
 
 Search Functions

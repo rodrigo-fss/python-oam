@@ -31,25 +31,25 @@ class SimpleCombination:
         to find what's the ones with higher outliing score.
 
         Args:
-            **score_method_instance** (ScoringClass): the instance
+            score_method_instance (ScoringClass): the instance
                 of the scoring method that will be used to evaluete each
                 subspace.
 
-            **min_items_per_subspace** (int): the lower limit of the subspace
+            min_items_per_subspace (int): the lower limit of the subspace
                 lenght to be created.
 
-            **max_items_per_subspace** (int): the upper limit of the subspace
+            max_items_per_subspace (int): the upper limit of the subspace
                 lenght to be created.
 
-            **dimensions** (list): the list of the columns found in your
+            dimensions (list): the list of the columns found in your
                 dataframe that should be combined to created the subspaces
                 to search from.
 
-            **subspaces** (list): the list of subspaces to search from.
-                **if you use this argument, min, max and dimensions arguments
-                will be ignored.**
+            subspaces (list): the list of subspaces to search from.
+                if you use this argument, min, max and dimensions arguments
+                will be ignored.
 
-            *multiprocessing* (bool): The option to enable multiprocessing.
+            multiprocessing (bool): The option to enable multiprocessing.
                 It will require a higher availability of memory but will
                 potentially decrease a lot the search time if you have
                 the resources."""
@@ -74,8 +74,7 @@ class SimpleCombination:
                 to analyse
 
         Returns:
-            (pd.Dataframe): A sorted dataframe with each
-            dimension followed by its score"""
+            pd.Dataframe: A sorted dataframe with each dimension followed by its score"""
 
         if not self.subspaces:
             self.subspaces = self._generate_subspaces()

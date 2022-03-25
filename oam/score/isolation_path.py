@@ -16,11 +16,11 @@ class IsolationPath(ScoringBaseClass):
         be calculated `number_of_paths` times to give you an average path.
 
         Args:
-            **subsample_size** (int): the size of subsamples generated in
-            each subspace cut.
+            subsample_size (int): the size of subsamples generated in
+                each subspace cut.
 
-            **number_of_paths** (int): the number of times the algorithm
-            tries to isolate the query to calculate the average path"""
+            number_of_paths (int): the number of times the algorithm
+                tries to isolate the query to calculate the average path"""
 
         self.subsample_size = subsample_size
         self.number_of_paths = number_of_paths

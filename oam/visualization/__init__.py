@@ -14,21 +14,20 @@ def zscore_heatmap(
     This function provides not only z-score for the given dataframe but also
     presents it in the form of a heatmap.
 
-        Args:
-            **df** (pandas.DataFrame): The dataframe to be transformed
+    Args:
+        df (pandas.DataFrame): The dataframe to be transformed
 
-            **index** (str): The index of the dataframe e.g. the datetime of
-            each row.
+        index (str): The index of the dataframe e.g. the datetime of each row.
 
-            **max** (int): The number of rows to be presented in the heatmap.
+        max (int): The number of rows to be presented in the heatmap.
 
-            **abs** (bool): Present only abosulte values.
+        abs (bool): Present only abosulte values.
 
-            **return_dataframe** (bool): The possibility of returning the
+        return_dataframe (bool): The possibility of returning the
             zscore dataframe or only presenting the heatmap.
 
-        Returns:
-            (pd.Dataframe): Transformed dataframe"""
+    Returns:
+        (pd.Dataframe): Transformed dataframe"""
 
     heatmap_df = dataframe.copy(deep=True)
     if index:
@@ -50,6 +49,25 @@ def zscore_heatmap(
 
 
 def visualize_oam_results(result_df, head):
+    """A graphic way to analyse OAM results, the head parameter will set the
+    the number of the subspaces to be displayed.
+
+    The return will be in the form of a heatmap and the values inside of it will
+    be boolean. meaning that for each dimension displayed in the X axis, if you
+    find an 1, that dimension is part of the correspondent Y subspace.
+
+    That way you can see which dimensions are part of a subspace and easly compare
+    and maybe even find patterns between different subspaces.
+
+    Args:
+        result_df (pandas.DataFrame): The dataframe returned by the search.search method.
+
+        head (int): The number of subspaces to be compared and displayed.
+            Ordered by the most outlier one to the least.
+
+    Returns:
+        (matplotlib.Axes): Axes object with the heatmap"""
+
     # a set will avoid duplication when adding new dimensions to it
     subspace = set(result_df.loc[0].subspace)
     # add every dimension found

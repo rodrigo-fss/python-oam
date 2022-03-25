@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>oam.score &mdash; python-oam 1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="oam.search" href="oam.search.html" />
+    <link rel="prev" title="oam.preprocess" href="oam.preprocess.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> python-oam
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalation</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="oam.preprocess.html">oam.preprocess</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">oam.score</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-oam.score.isolation_path">oam.score.isolation_path</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="oam.search.html">oam.search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oam.visualization.html">oam.visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oam.visualization.html#examples">Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">python-oam</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>oam.score</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/oam.score.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <div class="section" id="oam-score">
+<h1>oam.score<a class="headerlink" href="#oam-score" title="Permalink to this headline"></a></h1>
+<p>The score-and-search approach requires a scoring function, to measure how much
+the object differs from the rest in a subspace.</p>
+<p>Till the moment we have only implemented the Ipath scoring method that consists
+of making cuts in space, isolating objects from the rest
+of the dough. In this scenario, if the object is surrounded by several others, you will need to
+more cuts to separate it from the rest, while if the object is an outlier, it will take
+less cuts. This behavior can be observed in Figure 1, where (a) represents the
+procedure of an outlier that was isolated with only three cuts, while (b), a value
+not considered an outlier, it needed 7 cuts to be isolated from the rest of the data.</p>
+<img alt="_images/ipath.png" src="_images/ipath.png" />
+<p>To extend with different a algorithm just make sure it has an <em>score</em> method returning an <em>integer</em> as the
+outling score.</p>
+<p>You can find more details about it in the <a class="reference external" href="https://github.com/rodrigo-fss/python-oam//">repo README</a>!</p>
+<div class="section" id="module-oam.score.isolation_path">
+<span id="oam-score-isolation-path"></span><h2>oam.score.isolation_path<a class="headerlink" href="#module-oam.score.isolation_path" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="oam.score.isolation_path.IsolationPath">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">oam.score.isolation_path.</span></span><span class="sig-name descname"><span class="pre">IsolationPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subsample_size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_paths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#oam.score.isolation_path.IsolationPath" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">oam.score.ScoringBaseClass</span></code></p>
+<p>A class to evaluate a subspace making cuts in random dimensions.</p>
+<p>Generating subsamples with <cite>subsample_size</cite>, you can score how many
+cuts in the subspace you need to isolate the query. This metric can
+be calculated <cite>number_of_paths</cite> times to give you an average path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subsample_size</strong> (<em>int</em>) – the size of subsamples generated in
+each subspace cut.</p></li>
+<li><p><strong>number_of_paths</strong> (<em>int</em>) – the number of times the algorithm
+tries to isolate the query to calculate the average path</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="oam.score.isolation_path.IsolationPath.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_point_index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#oam.score.isolation_path.IsolationPath.score" title="Permalink to this definition"></a></dt>
+<dd><p>A function to score a query in a given subspace.</p>
+<p>It performs a binary search in the <cite>dataframe</cite> subspace
+for the object of the informed <cite>query_point_index</cite> position.
+When it manages to isolate the object, it returns a score that
+represents the number of iterations or cuts that were made till
+the query was isolated. The lower the value more an outlier
+the query is.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataframe</strong> (<em>pd.DataFrame</em>) – Dataframe used to
+build the path tree.</p></li>
+<li><p><strong>query_point_index</strong> (<em>int</em>) – Index of the query
+which you want to analyse</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the subspace score.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="oam.preprocess.html" class="btn btn-neutral float-left" title="oam.preprocess" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="oam.search.html" class="btn btn-neutral float-right" title="oam.search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Rodrigo Faria, Tiago Colli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>
