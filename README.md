@@ -2,7 +2,7 @@
 ![master CI](https://github.com/rodrigo-fss/python-oam/actions/workflows/github-actions.yml/badge.svg)
 ![coverage](https://github.com/rodrigo-fss/python-oam/blob/main/.github/badges/coverage_badge.svg)
 
-### OAM toolbox made by the community to the community
+### OAM toolbox made by the community for the community
 
 Outlier detection has been used to detect and, if appropriate, remove anomalous observati
 ons from the data. It’s usability can identify system failures and frauds before they escalate
