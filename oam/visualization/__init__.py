@@ -19,7 +19,7 @@ def zscore_heatmap(
 
         index (str): The index of the dataframe e.g. the datetime of each row.
 
-        max (int): The number of rows to be presented in the heatmap.
+        head (int): The number of rows to be presented in the heatmap.
 
         abs (bool): Present only abosulte values.
 
