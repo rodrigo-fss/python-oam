@@ -51,6 +51,11 @@ def test_zscore_heatmap(dataframe):
     assert True
 
 
+def test_zscore_heatmap_wo_annot(dataframe):
+    zscore_heatmap(dataframe, index="datetime", head=5, abs=True, annot=False)
+    assert True
+
+
 def test_oam_result_visualization(ipath_result_df):
     visualize_oam_results(ipath_result_df, 5)
     assert True

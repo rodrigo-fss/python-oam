@@ -4,7 +4,12 @@ from scipy.stats import zscore
 
 
 def zscore_heatmap(
-    dataframe: pd.DataFrame, index: str = None, head: int = None, abs: bool = None, return_dataframe: bool = False
+    dataframe: pd.DataFrame,
+    index: str = None,
+    head: int = None,
+    abs: bool = None,
+    return_dataframe: bool = False,
+    annot: bool = True,
 ):
     """The z-score also know as standard score is the number of standard
     deviations by which the value of a raw score is above or below the mean and
@@ -22,6 +27,8 @@ def zscore_heatmap(
         head (int): The number of rows to be presented in the heatmap.
 
         abs (bool): Present only abosulte values.
+
+        annot (bool): Toggle the value annotation in the coordinates of the heatmap
 
         return_dataframe (bool): The possibility of returning the
             zscore dataframe or only presenting the heatmap.
@@ -41,7 +48,7 @@ def zscore_heatmap(
     if head:
         heatmap_df = heatmap_df.head(head)
 
-    sns.heatmap(heatmap_df, annot=True)
+    sns.heatmap(heatmap_df, annot=annot)
     if return_dataframe:
         return heatmap_df
 
