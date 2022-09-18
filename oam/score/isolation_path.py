@@ -8,7 +8,7 @@ from . import ScoringBaseClass
 
 
 class IsolationPath(ScoringBaseClass):
-    def __init__(self, subsample_size: int, number_of_paths: int):
+    def __init__(self, subsample_size: int, number_of_paths: int, seed: int = None):
         """A class to evaluate a subspace making cuts in random dimensions.
 
         Generating subsamples with `subsample_size`, you can score how many
@@ -24,6 +24,8 @@ class IsolationPath(ScoringBaseClass):
 
         self.subsample_size = subsample_size
         self.number_of_paths = number_of_paths
+        if seed:
+            numpy.random.seed(seed)
 
     def score(self, dataframe: pd.DataFrame, query_point_index: int) -> float:
         """A function to score a query in a given subspace.
